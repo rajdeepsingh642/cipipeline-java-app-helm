@@ -24,26 +24,6 @@ pipeline{
                 }
             }
         }
-        stage('Integration testing'){
-            
-            steps{
-                
-                script{
-                    
-                    sh 'mvn verify -DskipUnitTests'
-                }
-            }
-        }
-        stage('Maven build'){
-            
-            steps{
-                
-                script{
-                    
-                    sh 'mvn clean install'
-                }
-            }
-        }
        
         
         stage('Sonar Quality check'){
@@ -56,7 +36,7 @@ pipeline{
                 script{
                 
                 withSonarQubeEnv(credentialsId: 'sonar-qube') {
-                   sh "mvn clean  sonar:sonar"
+                   sh "mvn clean install sonar:sonar"
                     }
               }
             }
