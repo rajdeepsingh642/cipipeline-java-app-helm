@@ -8,12 +8,12 @@ pipeline{
             
             steps{
                 
-                script{
+               git branch: 'main', url: 'https://github.com/rajdeepsingh642/cipipeline-java-app-helm.git'
                     
-                    git branch: 'main', url: 'https://github.com/vikash-kumar01/mrdevops_javaapplication.git'
+                    
                 }
             }
-        }
+        
         
        
         
@@ -21,17 +21,20 @@ pipeline{
             
             steps{
                 
-                script{
+                withSonarQubeEnv(credentialsId: 'sonar-qube') {
+                   sh 'mvn clean package sonar:sonar'
+                    }
+              }
                     
                    
                         
-                        sh 'mvn clean package sonar:sonar'
-                    }
-                   }
+                       
+        }
                     
-                }
-            }
+                
+    }
+}  
            
-            }
+            
         
         
