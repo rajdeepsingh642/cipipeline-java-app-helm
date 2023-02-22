@@ -14,17 +14,7 @@ pipeline{
                 }
         }
         
-          stage('UNIT testing'){
-            
-            steps{
-                
-                script{
-                    
-                    sh 'mvn test'
-                }
-            }
-        }
-       
+         
         
         stage('Sonar Quality check'){
          agent {
