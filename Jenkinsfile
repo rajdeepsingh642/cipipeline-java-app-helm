@@ -12,13 +12,17 @@ pipeline{
                     
                     
                 }
-            }
+        }
         
         
        
         
-        stage('Static code analysis'){
-            
+        stage('Sonar Quality check'){
+            agent {
+                docker { 
+                   image  'maven'
+            }
+            }
             steps{
                 
                 withSonarQubeEnv(credentialsId: 'sonar-qube') {
