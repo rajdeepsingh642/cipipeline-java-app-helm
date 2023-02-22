@@ -24,12 +24,13 @@ pipeline{
             }
             }
             steps{
+                script{
                 
                 withSonarQubeEnv(credentialsId: 'sonar-qube') {
                    sh "mvn sonar:sonar"
                     }
               }
-                    
+            }
                    
                         
                        
